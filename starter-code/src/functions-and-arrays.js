@@ -1,4 +1,7 @@
 // Find the maximum
+function maxOfTwoNumbers(a, b) {
+  return a > b ? a : b
+};
 
 // Finding Longest Word
 var words = [
@@ -11,13 +14,29 @@ var words = [
   'crackpot'
 ];
 
-// Calculating a Sum
+function findLongestWord(words) {
+  const res = words.sort( function(a, b) {
+    return b.length - a.length
+  })
+  return res[0]
+}
 
+// Calculating a Sum
 var numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
+function sumArray (numbers) {
+  return numbers.reduce( function(accumulator, currentValue) {
+    return accumulator + currentValue
+  }, 0)
+}
+ 
 // Calculate the Average
-
 var numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
+
+function averageNumbers(numbersAvg) {
+  
+  return numbersAvg.length !== 0 ? sumArray(numbersAvg) / numbersAvg.length : undefined
+}
 
 // Array of Strings
 var wordsArr = [
@@ -32,6 +51,11 @@ var wordsArr = [
   'fuel',
   'palace'
 ];
+
+function averageWordLength(wordsArr) {
+  return wordsArr.length !== 0 ? wordsArr.join('').length / wordsArr.length : undefined
+}
+
 
 // Unique Arrays
 var wordsUnique = [
@@ -48,6 +72,17 @@ var wordsUnique = [
   'bring'
 ];
 
+function uniquifyArray(wordsUnique) {
+  // return wordsUnique.length !== 0 ? arr : undefined
+
+  let arr = [];
+
+  wordsUnique.map( function(word) {
+    if ( !arr.includes(word) ) arr.push(word)
+  });
+  return arr.length !== 0 ? arr : undefined
+ }
+
 // Finding Elements
 var wordsFind = [
   'machine',
@@ -59,6 +94,13 @@ var wordsFind = [
   'truth',
   'disobedience'
 ];
+
+function doesWordExist(wordsFind, word) {
+  if (wordsFind == false) return false;
+
+  return wordsFind.indexOf(word) > -1
+}
+
 
 // Counting Repetion
 var wordsCount = [
@@ -74,10 +116,21 @@ var wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes(wordsCount, word) {
+  if (wordsCount == false) return false;
+
+  let count = 0
+  for (let i = 0; i <= wordsCount.length; i++) {
+    if (wordsCount[i] == word) count += 1
+  }
+  return count
+}
+
 // Bonus Quest
 
 var matrix = [
-  [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
+    ,
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
   [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65],
   [52, 70, 95, 23, 4, 60, 11, 42, 69, 24, 68, 56, 1, 32, 56, 71, 37, 2, 36, 91],
@@ -98,3 +151,18 @@ var matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+
+function greatestProduct(matrix) {
+  let count = 0
+  for (let i = 0; i <= matrix.length - 1; i++) {
+    for (let j = 0; j <= matrix.length - 1; j++) {
+      if (matrix[i][j] === 1) {
+        return 
+      }
+    }
+  }
+
+}
+
+greatestProduct(matrix)
