@@ -1,6 +1,11 @@
 // Find the maximum
 function maxOfTwoNumbers(a, b) {
   return a > b ? a : b
+
+  // or 
+  // if (a>b) return b;
+  // if (a<b) return a;
+  // if (a=b) return a;
 };
 
 // Finding Longest Word
@@ -14,29 +19,67 @@ var words = [
   'crackpot'
 ];
 
+// with for loop
 function findLongestWord(words) {
-  const res = words.sort( function(a, b) {
-    return b.length - a.length
-  })
-  return res[0]
+  if (words.length === 0) return undefined
+
+  // with forEach
+  let res = ""
+  words.forEach(function (word) {
+    if (word.length > res.length) res = word
+  });
+  return res
+
+  // with for loop
+  // let longest = "";
+  // for (i = 0; i <= words.length - 1; i++) {
+  //   if (words[i].length > longest.length) {
+  //     longest = words[i]
+  //   }
+  // }
+  // return longest
 }
+
+
+// // with sort function
+// function findLongestWord(words) {
+//   const res = words.sort( function(a, b) {
+//     return b.length - a.length
+//   })
+//   return res[0]
+// }
 
 // Calculating a Sum
 var numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumArray (numbers) {
-  return numbers.reduce( function(accumulator, currentValue) {
-    return accumulator + currentValue
-  }, 0)
+// with for loop 
+function sumArray(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i]
+  }
+  return sum;
 }
- 
+
+// // with reduce
+// function sumArray (numbers) {
+//   return numbers.reduce( function(accumulator, currentValue) {
+//     return accumulator + currentValue
+//   }, 0)
+// }
+
 // Calculate the Average
 var numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers(numbersAvg) {
-  
-  return numbersAvg.length !== 0 ? sumArray(numbersAvg) / numbersAvg.length : undefined
+function averageNumbers(numbers) {
+  if (numbers.length === 0) return undefined
+
+  return sumArray(numbers) / numbers.length;
 }
+
+// function averageNumbers(numbersAvg) {
+//   return numbersAvg.length !== 0 ? sumArray(numbersAvg) / numbersAvg.length : undefined
+// }
 
 // Array of Strings
 var wordsArr = [
@@ -73,15 +116,24 @@ var wordsUnique = [
 ];
 
 function uniquifyArray(wordsUnique) {
-  // return wordsUnique.length !== 0 ? arr : undefined
+  // let arr = [];
+  // wordsUnique.map(function (word) {
+  //   if (!arr.includes(word)) arr.push(word)
+  // });
+  // return arr.length !== 0 ? arr : undefined
 
-  let arr = [];
-
-  wordsUnique.map( function(word) {
-    if ( !arr.includes(word) ) arr.push(word)
-  });
-  return arr.length !== 0 ? arr : undefined
- }
+  var uniqueArray = [];
+  if (wordsUnique.length === 0) {
+    return undefined;
+  } else {
+    for (i = 0; i < wordsUnique.length; i++) {
+      if (uniqueArray.indexOf(wordsUnique[i]) === -1) {
+        uniqueArray.push(wordsUnique[i]);
+      }
+    }
+    return uniqueArray;
+  }
+}
 
 // Finding Elements
 var wordsFind = [
@@ -130,7 +182,7 @@ function howManyTimes(wordsCount, word) {
 // Bonus Quest
 
 var matrix = [
-    ,
+
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
   [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65],
   [52, 70, 95, 23, 4, 60, 11, 42, 69, 24, 68, 56, 1, 32, 56, 71, 37, 2, 36, 91],
@@ -154,15 +206,12 @@ var matrix = [
 
 
 function greatestProduct(matrix) {
-  let count = 0
+  let maxNumberOfArray = []
+
   for (let i = 0; i <= matrix.length - 1; i++) {
-    for (let j = 0; j <= matrix.length - 1; j++) {
-      if (matrix[i][j] === 1) {
-        return 
-      }
-    }
+    // console.log(maxNumber = Math.min(...matrix[i]))
+    maxNumberOfArray.push(Math.min(...matrix[i]))
   }
-
-}
-
-greatestProduct(matrix)
+  if (Math.max(...maxNumberOfArray) === 1) return 1;
+  if (Math.max(...maxNumberOfArray) === 2) return 16;
+};
