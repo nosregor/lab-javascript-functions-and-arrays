@@ -209,7 +209,6 @@ function greatestProduct(matrix) {
   let maxNumberOfArray = []
 
   for (let i = 0; i <= matrix.length - 1; i++) {
-    // console.log(maxNumber = Math.min(...matrix[i]))
     maxNumberOfArray.push(Math.min(...matrix[i]))
   }
   if (Math.max(...maxNumberOfArray) === 1) return 1;
